@@ -6,13 +6,66 @@
     >
     > Chưa viết Specification.
 
+- Cách chạy
 
+    -  **Frontend**: `npm install` và `npm start`
+    - **Backend**:
+        - Tạo môi trường ảo `venv`: `python -m venv venv`
+        - Kích hoạt `venv` trong `cmd`: `venv\Scripts\activate`
+        - Cài đặt các thư viện cần thiết: `pip install -r requirements.txt`. Lưu ý, cần cài đặt `CMake` và `Desktop development with C++` bằng `Visual Studio Build Tools`.
+        - Khởi động `server`: `python server.py`
+        
 - Cấu trúc thư mục sau khi chỉnh sửa
 
-```
+    - **Frontend**: Chỉ chỉnh sửa trong 2 tập tin
+        ```
+        AuthLogin.js
+        AuthRegister.js
+        ```
 
+    - **Backend**
+        ```
+        .gitignore
+        requirements.txt
+        server.py
+        tree.txt
 
-```
+        +--app
+        +---__init__.py
+        +---config
+        |       Database.py
+        |       DatetimeEncoder.py
+        |       Hash.py
+        |       __init__.py
+        |       
+        +---controllers
+        |       hello.py
+        |       __init__.py
+        |       
+        +---models
+        |       Hello.py
+        |       user_model.py
+        |       __init__.py
+        |       
+        +---packages
+        |   +---auth
+        |       +---controllers
+        |       |       auth_controller.py
+        |       |       
+        |       +---models
+        |       +---services
+        |               face_recognition_service.py
+        |               
+        +---repositories
+        |       BaseRepository.py
+        |       
+        +---services
+        |       BaseService.py
+        |       HelloService.py
+        |       
+        +---templates
+                index.html.j2
+        ```
 
 ## 1. Luồng Đăng Ký
 
