@@ -28,13 +28,13 @@ class UserRepository(BaseRepository):
                 user_instance.user_id = cursor.fetchone()[0]  # PostgreSQL automatically assigns new id
                 conn.commit()
                 
-    # Add face to Faces table
+    # Add face to faces table
     def add_face(self, user_id, image_name, image_path, embedding):
-        """Add a face to the Faces table."""
+        """Add a face to the faces table."""
         with get_connection() as conn:
             with conn.cursor() as cursor:
                 cursor.execute("""
-                INSERT INTO Faces (user_id, image_name, image_path, embedding)
+                INSERT INTO faces (user_id, image_name, image_path, embedding)
                 VALUES (%s, %s, %s, %s);
                 """, (user_id, image_name, image_path, json.dumps(embedding)))
                 conn.commit()

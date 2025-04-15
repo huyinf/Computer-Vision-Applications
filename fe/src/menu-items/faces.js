@@ -20,7 +20,7 @@ const icons = {
 
 const faces = {
     id: 'faces',
-    title: 'Faces',
+    title: 'faces',
     caption: 'Face Recognition',
     type: 'group',
     children: [

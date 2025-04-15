@@ -30,7 +30,7 @@ class AuthService(BaseService):
         )
         new_user.set_password(password)
 
-        # Save user to Users table
+        # Save user to users table
         self.user_repo.add_user(new_user)
         return {"message": "User registered successfully"}, 200
 

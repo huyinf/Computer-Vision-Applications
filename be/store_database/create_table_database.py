@@ -6,11 +6,11 @@ bcrypt = Bcrypt()
 
 # Configure PostgreSQL connection
 db_config = {
-    "dbname": "your_database_name",  # Replace database name
-    "user": "your_username",         # Replace PostgreSQL username
-    "password": "your_password",     # Replace PostgreSQL password
-    "host": "localhost",             # Host
-    "port": "5432"                   # PostgreSQL port (default: 5432)
+    'dbname': 'bioface',
+    'user': 'postgres',
+    'password': '123',
+    'host': 'localhost',
+    'port': '5432'
 }
 
 # Connect to PostgreSQL
@@ -22,13 +22,13 @@ except Exception as e:
     print(f"Connection error: {e}")
     exit()
 
-# Create Users table
+# Create users table
 try:
     cursor.execute("""
-    DROP TABLE IF EXISTS Faces CASCADE;
-    DROP TABLE IF EXISTS Users CASCADE;
+    DROP TABLE IF EXISTS faces CASCADE;
+    DROP TABLE IF EXISTS users CASCADE;
     
-    CREATE TABLE Users (
+    CREATE TABLE users (
         user_id SERIAL PRIMARY KEY,
         first_name VARCHAR(50) NOT NULL,
         last_name VARCHAR(50) NOT NULL,
@@ -37,25 +37,25 @@ try:
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     """)
-    print("Users table created successfully!")
+    print("users table created successfully!")
 except Exception as e:
-    print(f"Error creating Users table: {e}")
+    print(f"Error creating users table: {e}")
 
-# Create Faces table
+# Create faces table
 try:
     cursor.execute("""
-    CREATE TABLE Faces (
+    CREATE TABLE faces (
         face_id SERIAL PRIMARY KEY,
-        user_id INT REFERENCES Users(user_id) ON DELETE CASCADE,
+        user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
         image_name VARCHAR(255) NOT NULL,
         image_path VARCHAR(255) NOT NULL,
         embedding JSONB NOT NULL, # Store embeddings as JSON
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     """)
-    print("Faces table created successfully!")
+    print("faces table created successfully!")
 except Exception as e:
-    print(f"Error creating Faces table: {e}")
+    print(f"Error creating faces table: {e}")
 
 # Close connection
 cursor.close()

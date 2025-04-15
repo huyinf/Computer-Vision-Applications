@@ -121,7 +121,7 @@ if __name__ == "__main__":
         # create_table(cur)
 
         # # Collect and insert embeddings
-        # image_dir = "C:/Users/Admin/Documents/CV/deepface/tests/dataset"
+        # image_dir = "C:/users/Admin/Documents/CV/deepface/tests/dataset"
         # representations = get_embeddings(image_dir)
         # if representations:
         #     insert_data(cur, representations)
@@ -129,7 +129,7 @@ if __name__ == "__main__":
         #     logging.info("Embeddings inserted successfully.")
 
         # Perform face search
-        target_img = "C:/Users/Admin/Documents/CV/deepface/tests/dataset/img1.jpg"
+        target_img = "C:/users/Admin/Documents/CV/deepface/tests/dataset/img1.jpg"
         if os.path.exists(target_img):
             results = face_search(target_img, cur)
             for item in results:
@@ -143,10 +143,10 @@ if __name__ == "__main__":
         conn.close()
 
 
-# target_path = "C:/Users/Admin/Documents/CV/deepface/tests/dataset/img1.jpg" 
-# # "C:/Users/Admin/Documents/CV/face-recognition-app/data/input/imgs/messi-face/Image_2.jpg"
-# img_dir = "C:/Users/Admin/Documents/CV/deepface/tests/dataset/"
-# # "C:/Users/Admin/Documents/CV/face-recognition-app/data/input/imgs/messi-face"
+# target_path = "C:/users/Admin/Documents/CV/deepface/tests/dataset/img1.jpg" 
+# # "C:/users/Admin/Documents/CV/face-recognition-app/data/input/imgs/messi-face/Image_2.jpg"
+# img_dir = "C:/users/Admin/Documents/CV/deepface/tests/dataset/"
+# # "C:/users/Admin/Documents/CV/face-recognition-app/data/input/imgs/messi-face"
 
 # finds = DeepFace.find(
 #     img_path=target_path,

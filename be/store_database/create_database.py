@@ -7,7 +7,7 @@ import json
 
 # Configure PostgreSQL connection
 db_config = {
-    'dbname': 'cv_project',
+    'dbname': 'bioface',
     'user': 'postgres',
     'password': '123',
     'host': 'localhost',
@@ -41,21 +41,21 @@ def hash_password(password):
     """Hash password using flask-bcrypt."""
     return bcrypt.generate_password_hash(password).decode('utf-8')
 
-# Add user to Users table
+# Add user to users table
 def add_user(first_name, last_name, email, password):
-    """Add a user to the Users table."""
+    """Add a user to the users table."""
     cursor.execute("""
-    INSERT INTO Users (first_name, last_name, email, password)
+    INSERT INTO users (first_name, last_name, email, password)
     VALUES (%s, %s, %s, %s) RETURNING user_id;
     """, (first_name, last_name, email, password))
     conn.commit()
     return cursor.fetchone()[0]
 
-# Add face to Faces table
+# Add face to faces table
 def add_face(user_id, image_name, image_path, embedding):
-    """Add a face to the Faces table."""
+    """Add a face to the faces table."""
     cursor.execute("""
-    INSERT INTO Faces (user_id, image_name, image_path, embedding)
+    INSERT INTO faces (user_id, image_name, image_path, embedding)
     VALUES (%s, %s, %s, %s);
     """, (user_id, image_name, image_path, json.dumps(embedding)))
     conn.commit()
@@ -79,7 +79,7 @@ def create_data_from_images(folder_path):
             image_name = os.path.basename(image_path)
             embedding = DeepFace.represent(img_path=image_path, model_name="SFace")[0]["embedding"]
 
-            # Add face to Faces table
+            # Add face to faces table
             add_face(user_id, image_name, image_path, embedding)
             print(f"Successfully added: {image_name} -> User ID: {user_id}")
 

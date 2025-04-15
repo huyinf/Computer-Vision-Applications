@@ -146,7 +146,7 @@ class FaceRecognitionService:
         conn = get_connection()
         cursor = conn.cursor()
         try:
-            cursor.execute("SELECT face_id, user_id, embedding FROM Faces;")
+            cursor.execute("SELECT face_id, user_id, embedding FROM faces;")
             data = cursor.fetchall()
 
             # Convert embedding JSON to numpy array
@@ -210,7 +210,7 @@ class FaceRecognitionService:
             conn = get_connection()
             cursor = conn.cursor()
             try:
-                cursor.execute("SELECT user_id, image_path FROM Faces WHERE face_id = %s;", (best_face_id,))
+                cursor.execute("SELECT user_id, image_path FROM faces WHERE face_id = %s;", (best_face_id,))
                 row = cursor.fetchone()
                 user_id, image_path_db = row
 
@@ -298,7 +298,7 @@ class FaceRecognitionService:
             nprobe = 5  # Number of clusters to search in FAISS (usually less than or equal to nlist)
             self.faiss_index.nprobe = nprobe
             distances, indices = self.faiss_index.search(query_embedding, k=k)
-            print("\n\n\Indices:", indices)
+            print("\n\nIndices:", indices)
             # Initialize result list
             encoded_images = []
             similarities = []

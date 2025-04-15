@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw
 
 # Paths to two images for comparison
-img1_path = r"C:\Users\HuyTP\Documents\CV\face-recognition-app\data\input\imgs\messi-face\Image_1.jpg"
-img2_path = r"C:\Users\HuyTP\Documents\CV\face-recognition-app\data\input\imgs\alok-face\Image_2.jpg"
+img1_path = r"C:\users\HuyTP\Documents\CV\face-recognition-app\data\input\imgs\messi-face\Image_1.jpg"
+img2_path = r"C:\users\HuyTP\Documents\CV\face-recognition-app\data\input\imgs\alok-face\Image_2.jpg"
 
 # Choose yunet: lightweight and highly accurate
 detectors = [

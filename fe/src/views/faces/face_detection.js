@@ -152,7 +152,7 @@ const FaceDetection = () => {
                                     fontSize: '18px'
                                 }}
                             >
-                                Faces Detected: {faceCount}
+                                faces Detected: {faceCount}
                             </Typography>
                         )}
 
